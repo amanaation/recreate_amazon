@@ -1,1 +1,1 @@
-web: gunicorn duplicate_amazon.wsgi --log-file -
+web: gunicorn duplicate_amazon.wsgi
