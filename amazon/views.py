@@ -4,10 +4,6 @@ from django.shortcuts import redirect
 import requests
 import unidecode
 import re
-import requests # to get image from the web
-import shutil # to save it locally
-from PIL import Image
-import pytesseract
 
 # Create your views here.
 
