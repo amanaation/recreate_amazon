@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.template import RequestContext
 from django.http import HttpResponse
 from django.shortcuts import redirect
 import requests
@@ -41,13 +42,13 @@ def render_page(request):
             print("Page %s must have been blocked by Amazon as the status code was %d"%(url,r.status_code))
         return None
     #print(r.text)
-    #with open("amazon/templates/"+domain+".html","w") as file:
-    #    file.write(unidecode.unidecode(r.text))
-    text = str(r.text).replace("\n", "")
+    with open("amazon/templates/"+domain+".html","w") as file:
+        file.write(unidecode.unidecode(r.text))
+    #text = str(r.text).replace("\n", "")
 
     #return HttpResponse("<h1> Hello World </h1>")
 
-    return HttpResponse( text)
+    return render(request, domain+".html")
     #'''
 def google(request):
 
