@@ -47,8 +47,11 @@ def render_page(request):
     #text = str(r.text).replace("\n", "")
 
     #return HttpResponse("<h1> Hello World </h1>")
+    with open("amazon/templates/"+domain+".html","r") as file:
+        text = file.read()
 
-    return render(request, domain+".html")
+
+    return HttpResponse( text)
     #'''
 def google(request):
 
