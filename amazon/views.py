@@ -14,7 +14,7 @@ def render_page(request):
     url = "google.com"
 
     request_url = str(request.build_absolute_uri())
-    url = request_url.replace("http://localhost:8000","https://"+url)
+    url = re.sub("http://(.*?)/","https://"+url+"/",request_url)
     s = requests.Session()
 
     headers = {
