@@ -31,7 +31,7 @@ def render_page(request):
     }
 
     # Download the page using requests
-    print("Downloading %s"%url)
+    #print("Downloading %s"%url)
     r = s.get(url, headers=headers)
     # Simple check to check if page was blocked (Usually 503)
     if r.status_code > 500:
@@ -41,10 +41,13 @@ def render_page(request):
             print("Page %s must have been blocked by Amazon as the status code was %d"%(url,r.status_code))
         return None
     #print(r.text)
-    with open("amazon/templates/"+domain+".html","w") as file:
-        file.write(unidecode.unidecode(r.text))
+    #with open("amazon/templates/"+domain+".html","w") as file:
+    #    file.write(unidecode.unidecode(r.text))
+    text = str(r.text).replace("\n", "")
 
-    return render(request, domain+".html")
+    #return HttpResponse("<h1> Hello World </h1>")
+
+    return HttpResponse( text)
     #'''
 def google(request):
 
